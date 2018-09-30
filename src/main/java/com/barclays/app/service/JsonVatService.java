@@ -8,7 +8,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,15 +15,16 @@ import java.util.List;
  * Created by vmusil on 27-Sep-2018.
  */
 @Service
-public class JsonVatService {
+public class JsonVatService implements JsonVatServiceI {
 
-    public static final String JSONVAT_URL = "http://jsonvat.com/";
+    private static final String JSONVAT_URL = "http://jsonvat.com/";
 
     /**
      *
      * @return List of EU countries, can be empty, never null
      * @throws IllegalStateException in case of no internet connectivity or JSON parsing issue.
      */
+    @Override
     public List<Country> getEUCountries() {
         List<Country> countries;
 

@@ -3,6 +3,7 @@ package com.barclays.app.controller;
 import com.barclays.app.data.Country;
 import com.barclays.app.data.Period;
 import com.barclays.app.service.JsonVatService;
+import com.barclays.app.service.JsonVatServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -12,18 +13,19 @@ import java.util.*;
  * Created by vmusil on 27-Sep-2018.
  */
 @Controller
-public class JsonVatController {
+public class JsonVatController implements JsonVatControllerI {
 
     @Autowired
-    private JsonVatService jsovVatService;
+    private JsonVatServiceI jsovVatService;
 
+    @Override
     public List<Country> getSortedCountriesByStandardVat(Date byDate) {
         List<Country> euCountries = jsovVatService.getEUCountries();
 
         // Keep periods just for effective date
         filterPeriodsByDate(euCountries, byDate);
 
-        // sort by standard VAT
+        // sort by standard VAT ascending
         Collections.sort(euCountries, Country.STANDARD_VAT_COMPARATOR);
 
         return euCountries;

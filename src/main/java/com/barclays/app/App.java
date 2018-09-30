@@ -1,6 +1,6 @@
 package com.barclays.app;
 
-import com.barclays.app.controller.JsonVatController;
+import com.barclays.app.controller.JsonVatControllerI;
 import com.barclays.app.data.Country;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -14,7 +14,7 @@ import java.util.List;
 public class App {
 
     @Autowired
-    private JsonVatController jsonVatController;
+    private JsonVatControllerI jsonVatController;
 
     public static void main(String[] args) {
         AnnotationConfigApplicationContext ctx = registerSpringAppContext();
