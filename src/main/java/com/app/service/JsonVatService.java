@@ -1,7 +1,8 @@
-package com.barclays.app.service;
+package com.app.service;
 
-import com.barclays.app.data.Country;
-import com.barclays.app.utils.UrlDownloader;
+import com.app.model.Country;
+import com.app.utils.CommonUtils;
+import com.app.utils.UrlDownloader;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -9,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 /**

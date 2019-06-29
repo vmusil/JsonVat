@@ -1,7 +1,8 @@
-package com.barclays.app;
+package com.app.service;
 
-import com.barclays.app.controller.JsonVatControllerI;
-import com.barclays.app.data.Country;
+import com.app.AppTestConfig;
+import com.app.model.Country;
+import com.app.utils.CommonUtils;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,14 +18,14 @@ import java.util.List;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {AppTestConfig.class})
-public class JsonVatControllerTest {
+public class JsonVatTest {
 
     @Autowired
-    private JsonVatControllerI controller;
+    private JsonVatServiceI service;
 
     @Test
     public void verifySortingOfStandardVAT() {
-        List<Country> countriesSortedByStandardVat = controller.getSortedCountriesByStandardVat(new Date());
+        final List<Country> countriesSortedByStandardVat = CommonUtils.sortCountriesByStandardVat(service.getEUCountries(), new Date());
 
         Assert.assertEquals("First country has to have lowest standard VAT",
                 (Object)countriesSortedByStandardVat.get(0).getPeriods().get(0).getRates().getStandard(), 1F);

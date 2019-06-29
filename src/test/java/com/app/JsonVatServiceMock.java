@@ -1,9 +1,9 @@
-package com.barclays.app;
+package com.app;
 
-import com.barclays.app.data.Country;
-import com.barclays.app.data.Period;
-import com.barclays.app.data.Rates;
-import com.barclays.app.service.JsonVatServiceI;
+import com.app.model.Country;
+import com.app.model.Period;
+import com.app.model.Rates;
+import com.app.service.JsonVatServiceI;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package com.barclays.app.utils;
+package com.app.utils;
 
 import java.io.BufferedReader;
 import java.io.IOException;

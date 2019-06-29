@@ -1,37 +1,32 @@
-package com.barclays.app.controller;
+package com.app.utils;
 
-import com.barclays.app.data.Country;
-import com.barclays.app.data.Period;
-import com.barclays.app.service.JsonVatService;
-import com.barclays.app.service.JsonVatServiceI;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import com.app.model.Country;
+import com.app.model.Period;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 /**
- * Created by vmusil on 27-Sep-2018.
+ * Created by vmusil on 29-Jun-2019.
  */
-@Controller
-public class JsonVatController implements JsonVatControllerI {
+public final class CommonUtils {
 
-    @Autowired
-    private JsonVatServiceI jsovVatService;
+    private CommonUtils() {}
 
-    @Override
-    public List<Country> getSortedCountriesByStandardVat(Date byDate) {
-        List<Country> euCountries = jsovVatService.getEUCountries();
-
+    public static List<Country> sortCountriesByStandardVat(final List<Country> countries, final Date byDate) {
         // Keep periods just for effective date
-        filterPeriodsByDate(euCountries, byDate);
+        CommonUtils.filterPeriodsByDate(countries, byDate);
 
         // sort by standard VAT ascending
-        Collections.sort(euCountries, Country.STANDARD_VAT_COMPARATOR);
+        Collections.sort(countries, Country.STANDARD_VAT_COMPARATOR);
 
-        return euCountries;
+        return countries;
     }
 
-    private void filterPeriodsByDate(List<Country> euCountries, Date byDate) {
+    public static void filterPeriodsByDate(List<Country> euCountries, Date byDate) {
         if (byDate == null) {
             throw new IllegalArgumentException("Invalid date for getting VATs ('" + byDate + "')");
         }
@@ -60,7 +55,7 @@ public class JsonVatController implements JsonVatControllerI {
         }
     }
 
-    private void sortPeriodsByDate(List<Period> periods) { // from the newest to the oldest
+    private static void sortPeriodsByDate(List<Period> periods) { // from the newest to the oldest
         Collections.sort(periods, (p1, p2) -> {
             Date effectiveFromDate1 = p1.getEffectiveFromDate();
             Date effectiveFromDate2 = p2.getEffectiveFromDate();

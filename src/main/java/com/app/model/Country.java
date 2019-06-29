@@ -1,4 +1,4 @@
-package com.barclays.app.data;
+package com.app.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
