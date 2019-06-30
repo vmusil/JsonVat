@@ -26,9 +26,9 @@ public final class CommonUtils {
         return countries;
     }
 
-    public static void filterPeriodsByDate(List<Country> euCountries, Date byDate) {
+    public static void filterPeriodsByDate(final List<Country> euCountries, final Date byDate) {
         if (byDate == null) {
-            throw new IllegalArgumentException("Invalid date for getting VATs ('" + byDate + "')");
+            throw new IllegalArgumentException("Date for getting VATs must not be null!");
         }
 
         for (Iterator<Country> it = euCountries.iterator(); it.hasNext(); ) {

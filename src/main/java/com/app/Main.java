@@ -1,18 +1,16 @@
 package com.app;
 
-import com.app.server.EmbeddedServer;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * Created by vmusil on 27-Sep-2018.
  */
+@SpringBootApplication
 public class Main {
 
 
-    public static void main(String[] args) throws Exception {
-        new Main().startServer();
-    }
-
-    private void startServer() throws Exception {
-        EmbeddedServer.startJetty();
+    public static void main(String[] args) {
+        SpringApplication.run(Main.class, args);
     }
 }

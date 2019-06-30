@@ -12,8 +12,8 @@ import java.net.URL;
 public final class UrlDownloader {
 
 
-    public static final String getContentFromUrl(String url) throws IOException {
-        InputStream is = new URL(url).openStream();
+    public static final String getContentFromUrl(final String url) throws IOException {
+        final InputStream is = new URL(url).openStream();
 
         String doc;
 
@@ -24,8 +24,8 @@ public final class UrlDownloader {
         return doc;
     }
 
-    private static String readContent(BufferedReader br) throws IOException {
-        StringBuilder sb = new StringBuilder();
+    private static String readContent(final BufferedReader br) throws IOException {
+        final StringBuilder sb = new StringBuilder();
 
         int c;
         while ((c = br.read()) != -1) {
