@@ -1,5 +1,5 @@
 # JsonVat
-Test application for getting EU countries VAT rates sorted by requirements
+Testing application (Spring Boot with REST and embedded Tomcat + ReactJS) for getting EU countries VAT rates sorted by requirements
 
 To run it:
 ```
