@@ -2,12 +2,8 @@ import React, { Component } from 'react';
 
 export default class MenuBar extends Component {
 
-    /*constructor(props) {
-        super(props);
-    }*/
-
     propTypes: {
-        // the StyledButton requires a clickHandler
+        // the MenuBar requires a clickHandler
         vatBtOnClickHandler: React.PropTypes.func.Required
     }
 
@@ -19,7 +15,7 @@ export default class MenuBar extends Component {
                     className="btn btn-primary"
                     onClick={this.props.vatBtOnClickHandler.bind(this, 'lowest')}
                  >
-                    Country with the lowest VAT rate
+                    Countries with the lowest VAT rate
                 </button>
 
                 <button
@@ -27,7 +23,7 @@ export default class MenuBar extends Component {
                     className="btn btn-success"
                     onClick={this.props.vatBtOnClickHandler.bind(this, 'highest')}
                 >
-                    Country with the highest VAT rate
+                    Countries with the highest VAT rate
                 </button>
             </>
         );

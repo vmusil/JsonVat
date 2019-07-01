@@ -1,15 +1,29 @@
 # JsonVat
-Test for getting EU countries VAT rates
+Test application for getting EU countries VAT rates sorted by requirements
 
 To run it:
+```
+mvn clean package
 
-mvn clean install
+java -jar target/json-vat-1.0.jar
+```
 
-java -jar target/json-vat-1.0-jar-with-dependencies.jar
+To see result in ReactJS:
+```http://localhost:8080/```
+
+To run also front-end part:
+```
+cd src/main/js/ && npm start
+```
 
 To get countries with the lowest/highest VAT rates (default are 3 items):
+```
 http://localhost:8080/countries/vat/lowest
 http://localhost:8080/countries/vat/highest
+```
 
 Optional parameter 'count' to get more or less results (it's max possible value, it can be lower due to the total number of countries):
+```
 http://localhost:8080/countries/vat/lowest?count=5
+```
+

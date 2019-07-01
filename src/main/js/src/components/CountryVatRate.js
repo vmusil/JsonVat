@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class JsonVat extends Component {
+export default class CountryVatRate extends Component {
 
     propTypes: {
         type: React.PropTypes.string.Required
@@ -16,12 +16,11 @@ export default class JsonVat extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-//        console.log('VAT type choice (was: ' + prevProps.type + ', will be: ' + this.props.type + ')');
-
-        if (this.props.type === prevProps.type) { // must be here otherwise infinite loop !
+        if (this.props.type === prevProps.type) { // some condition must be here otherwise infinite loop !
             return;
         }
 
+        // TODO: Move the back-end url to some env properties
         fetch(`http://localhost:8080/countries/vat/${this.props.type}?count=4`)
           .then(response =>
             {
@@ -33,9 +32,15 @@ export default class JsonVat extends Component {
           .then(output => this.setState(
             { data: output }
            ))
-          .catch(err => console.log(err));
+          .catch(err => {
+            console.log(err);
+            this.setState (
+                { data: `Not able to fetch the data (are you offline/ is back-end running?). Reason: ${err}` }
+            );
+           });
     }
 
+//     TODO: Refactor back-end to return proper JSON format and then this component
     render() {
         return (
             <div

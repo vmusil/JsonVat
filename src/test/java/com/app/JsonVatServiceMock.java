@@ -11,6 +11,8 @@ import java.util.List;
 
 /**
  * Created by vmusil on 30-Sep-2018.
+ *
+ * This class creates Mock instead of a real service calling some endpoint on the internet...
  */
 @Service
 public class JsonVatServiceMock implements JsonVatServiceI {

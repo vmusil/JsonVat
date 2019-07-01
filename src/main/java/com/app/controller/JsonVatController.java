@@ -38,7 +38,7 @@ public class JsonVatController {
         output
                 .append("*********************************************************************")
                 .append("\n")
-                .append("Countries with lowest standard VAT rate for today within the EU are: ")
+                .append("EU countries with the lowest standard VAT rate for today are: ")
                 .append("\n");
 
         for (int i = 0; count > 0 && i < sortedCountries.size(); --count, ++i) {
@@ -60,7 +60,7 @@ public class JsonVatController {
         output
                 .append("**********************************************************************")
                 .append("\n")
-                .append("Countries with highest standard VAT rate for today within the EU are: ")
+                .append("EU countries with the highest standard VAT rate for today are: ")
                 .append("\n");
 
         for (int i = sortedCountries.size() - 1; count > 0 && i >= 0; --count, --i) {
@@ -80,7 +80,7 @@ public class JsonVatController {
 
     private void printCountryStandardVat(final StringBuilder output, final Country country) {
         output.append(
-                String.format("Country: %s (standard VAT rate: %s)\n",
+                String.format("%s (standard VAT rate: %s)\n",
                         country.getName(), country.getPeriods().get(0).getRates().getStandard()));
     }
 }

@@ -29,13 +29,13 @@ public class JsonVatService implements JsonVatServiceI {
      */
     @Override
     public List<Country> getEUCountries() {
-        List<Country> countries;
+        final List<Country> countries;
 
         try {
             String jsonResponse = UrlDownloader.getContentFromUrl(JSONVAT_URL);
 
             ObjectMapper mapper = new ObjectMapper();
-            mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true); // otherwise the Country List fields fails when set
+            mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true); // otherwise the Country List fields fails when set (json root node is array)
 
             JsonNode tree = mapper.readTree(jsonResponse);
             JsonNode countriesJson = tree.at("/rates");

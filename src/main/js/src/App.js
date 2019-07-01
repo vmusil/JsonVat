@@ -1,7 +1,6 @@
 import React from 'react';
-//import logo from './logo.svg';
 import './App.css';
-import JsonVat from './components/JsonVat';
+import CountryVatRate from './components/CountryVatRate';
 import MenuBar from './components/MenuBar';
 
 class App extends React.Component {
@@ -19,7 +18,7 @@ class App extends React.Component {
       return (
         <div className="App">
           <MenuBar vatBtOnClickHandler={(vatType) => this.showVatHandler(vatType)}/>
-          <JsonVat type={this.state.vatType} />
+          <CountryVatRate type={this.state.vatType} />
         </div>
       );
   }
